@@ -1,6 +1,6 @@
 // @flow
 import {setDefaultAnalyticsPlugin} from 'player-defaults';
-import {Env, TextStyle, Utils, setCapabilities, EngineType, DrmScheme} from '@playkit-js/playkit-js';
+import {Env, TextStyle, Utils, setCapabilities, EngineType, DrmScheme} from '@pakhshkit-js/pakhshkit-js';
 import {ValidationErrorType} from './validation-error';
 import StorageManager from '../storage/storage-manager';
 import type {LogLevelObject} from './logger';
@@ -8,21 +8,21 @@ import getLogger, {LogLevel, setLogHandler, setLogLevel as _setLogLevel} from '.
 import {configureExternalStreamRedirect} from './external-stream-redirect-helper';
 import {RemotePlayerManager} from '../cast/remote-player-manager';
 import {RemoteControl} from '../cast/remote-control';
-import {KalturaPlayer} from '../../kaltura-player';
-import {addClientTag, addReferrer, updateSessionIdInUrl} from './kaltura-params';
+import {KontorolPlayer} from '../../kontorol-player';
+import {addClientTag, addReferrer, updateSessionIdInUrl} from './kontorol-params';
 
 const setupMessages: Array<Object> = [];
-const CONTAINER_CLASS_NAME: string = 'kaltura-player-container';
-const KALTURA_PLAYER_DEBUG_QS: string = 'debugKalturaPlayer';
+const CONTAINER_CLASS_NAME: string = 'kontorol-player-container';
+const KONTOROL_PLAYER_DEBUG_QS: string = 'debugKontorolPlayer';
 const KAVA_DEFAULT_IMPRESSION =
-  'https://analytics.kaltura.com/api_v3/index.php?service=analytics&action=trackEvent&apiVersion=3.3.0&format=1&eventType=1&partnerId=2504201&entryId=1_3bwzbc9o&&eventIndex=1&position=0';
+  'https://analytics.kontorol.com/api_v3/index.php?service=analytics&action=trackEvent&apiVersion=3.3.0&format=1&eventType=1&partnerId=2504201&entryId=1_3bwzbc9o&&eventIndex=1&position=0';
 
 declare var __CONFIG_DOCS_URL__: string;
 
 /**
  * Validate the initial user config.
  * @private
- * @param {PartialKPOptionsObject} options - partial kaltura player options.
+ * @param {PartialKPOptionsObject} options - partial kontorol player options.
  * @returns {void}
  */
 function validateConfig(options: PartialKPOptionsObject): void {
@@ -78,7 +78,7 @@ function validateProviderConfig(providerOptions: ProviderOptionsObject): void {
  * @param {string} targetId - The div id which the player will append to.
  * @returns {string} - The player container id.
  */
-function createKalturaPlayerContainer(targetId: string): string {
+function createKontorolPlayerContainer(targetId: string): string {
   const el = document.createElement('div');
   el.id = Utils.Generator.uniqueId(5);
   el.className = CONTAINER_CLASS_NAME;
@@ -93,7 +93,7 @@ function createKalturaPlayerContainer(targetId: string): string {
 /**
  * Sets the storage config on the player config if certain conditions are met.
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function setStorageConfig(options: KPOptionsObject): void {
@@ -105,10 +105,10 @@ function setStorageConfig(options: KPOptionsObject): void {
 /**
  * Applies cache support if it's supported by the environment.
  * @private
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {KontorolPlayer} player - The Kontorol player.
  * @returns {void}
  */
-function applyStorageSupport(player: KalturaPlayer): void {
+function applyStorageSupport(player: KontorolPlayer): void {
   if (StorageManager.isLocalStorageAvailable()) {
     StorageManager.attach(player);
   }
@@ -117,11 +117,11 @@ function applyStorageSupport(player: KalturaPlayer): void {
 /**
  * Loads the registered remote players.
  * @private
- * @param {KPOptionsObject} defaultOptions - The kaltura player options.
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {KPOptionsObject} defaultOptions - The kontorol player options.
+ * @param {KontorolPlayer} player - The Kontorol player.
  * @returns {void}
  */
-function applyCastSupport(defaultOptions: KPOptionsObject, player: KalturaPlayer): void {
+function applyCastSupport(defaultOptions: KPOptionsObject, player: KontorolPlayer): void {
   if (defaultOptions.cast) {
     RemotePlayerManager.load(defaultOptions.cast, new RemoteControl(player));
   }
@@ -130,10 +130,10 @@ function applyCastSupport(defaultOptions: KPOptionsObject, player: KalturaPlayer
 /**
  * Sets the player text style from storage.
  * @private
- * @param {KalturaPlayer} player - The Kaltura player.
+ * @param {KontorolPlayer} player - The Kontorol player.
  * @returns {void}
  */
-function setStorageTextStyle(player: KalturaPlayer): void {
+function setStorageTextStyle(player: KontorolPlayer): void {
   if (StorageManager.isLocalStorageAvailable()) {
     const textStyleObj = StorageManager.getPlayerTextStyle();
     if (textStyleObj) {
@@ -145,7 +145,7 @@ function setStorageTextStyle(player: KalturaPlayer): void {
 /**
  * Call to setCapabilities on the first UI_CLICKED event
  * @private
- * @param {Player} player - The Kaltura player.
+ * @param {Player} player - The Kontorol player.
  * @returns {void}
  */
 function attachToFirstClick(player: Player): void {
@@ -169,13 +169,13 @@ function attachToFirstClick(player: Player): void {
  */
 function isDebugMode(): boolean {
   let isDebugMode = false;
-  if (window.DEBUG_KALTURA_PLAYER === true) {
+  if (window.DEBUG_KONTOROL_PLAYER === true) {
     isDebugMode = true;
   } else if (window.URLSearchParams) {
     const urlParams = new URLSearchParams(window.location.search);
-    isDebugMode = urlParams.has(KALTURA_PLAYER_DEBUG_QS);
+    isDebugMode = urlParams.has(KONTOROL_PLAYER_DEBUG_QS);
   } else {
-    isDebugMode = !!getUrlParameter(KALTURA_PLAYER_DEBUG_QS);
+    isDebugMode = !!getUrlParameter(KONTOROL_PLAYER_DEBUG_QS);
   }
   return isDebugMode;
 }
@@ -183,7 +183,7 @@ function isDebugMode(): boolean {
 /**
  * set the logger
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function setLogOptions(options: KPOptionsObject): void {
@@ -236,7 +236,7 @@ function getUrlParameter(name: string) {
  * @returns {boolean} - server UIConf exist
  */
 function serverUIConfExist(uiConfId: ?number): boolean {
-  const UIConf = Utils.Object.getPropertyPath(window, '__kalturaplayerdata.UIConf');
+  const UIConf = Utils.Object.getPropertyPath(window, '__kontorolplayerdata.UIConf');
   const hasUiConfId = uiConfId !== null && uiConfId !== undefined;
   return hasUiConfId && ((UIConf !== undefined && UIConf[uiConfId] !== undefined) || false);
 }
@@ -250,7 +250,7 @@ function serverUIConfExist(uiConfId: ?number): boolean {
 function extractServerUIConf(uiConfId: number): Object {
   let config = {};
   if (serverUIConfExist(uiConfId)) {
-    config = window.__kalturaplayerdata.UIConf[uiConfId];
+    config = window.__kontorolplayerdata.UIConf[uiConfId];
   }
   return config;
 }
@@ -258,11 +258,11 @@ function extractServerUIConf(uiConfId: number): Object {
 /**
  * Gets the default options after merging the user options with the uiConf options and the default internal options.
  * @private
- * @param {PartialKPOptionsObject} options - partial user kaltura player options.
- * @returns {KPOptionsObject} - default kaltura player options.
+ * @param {PartialKPOptionsObject} options - partial user kontorol player options.
+ * @returns {KPOptionsObject} - default kontorol player options.
  */
 function getDefaultOptions(options: PartialKPOptionsObject): KPOptionsObject {
-  const targetId = createKalturaPlayerContainer(options.targetId);
+  const targetId = createKontorolPlayerContainer(options.targetId);
   let defaultOptions: KPOptionsObject = {
     targetId: options.targetId,
     provider: {
@@ -293,7 +293,7 @@ function getDefaultOptions(options: PartialKPOptionsObject): KPOptionsObject {
 /**
  * Sets config option for native HLS playback
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function checkNativeHlsSupport(options: KPOptionsObject): void {
@@ -314,7 +314,7 @@ function checkNativeHlsSupport(options: KPOptionsObject): void {
 /**
  * Sets config option for native text track support
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function checkNativeTextTracksSupport(options: KPOptionsObject): void {
@@ -333,7 +333,7 @@ function checkNativeTextTracksSupport(options: KPOptionsObject): void {
 /**
  * Sets config option for Ads with MSE
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function _configureAdsWithMSE(options: KPOptionsObject): void {
@@ -359,7 +359,7 @@ function _configureAdsWithMSE(options: KPOptionsObject): void {
 /**
  * Sets config option for LG TV SDK 2 live which has problem with long duration buffer
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function _configureLGSDK2HlsLiveConfig(options: KPOptionsObject): void {
@@ -372,7 +372,7 @@ function _configureLGSDK2HlsLiveConfig(options: KPOptionsObject): void {
 /**
  * Sets config option for LG TV
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function configureLGTVDefaultOptions(options: KPOptionsObject): void {
@@ -398,7 +398,7 @@ function configureLGTVDefaultOptions(options: KPOptionsObject): void {
 /**
  * prefer Playready in edge - from chromium version of edge Widevine is option as well
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function configureEdgeDRMDefaultOptions(options: KPOptionsObject): void {
@@ -412,7 +412,7 @@ function configureEdgeDRMDefaultOptions(options: KPOptionsObject): void {
 /**
  * Sets default config option for ima plugin
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function configureIMADefaultOptions(options: KPOptionsObject): void {
@@ -428,7 +428,7 @@ function configureIMADefaultOptions(options: KPOptionsObject): void {
 /**
  * Sets default config option for dai plugin
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function configureDAIDefaultOptions(options: KPOptionsObject): void {
@@ -453,7 +453,7 @@ function configureDAIDefaultOptions(options: KPOptionsObject): void {
 /**
  * Sets default config option for bumper plugin when ima-dai enabled
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function configureBumperDefaultOptions(options: KPOptionsObject): void {
@@ -484,12 +484,12 @@ function configureBumperDefaultOptions(options: KPOptionsObject): void {
 }
 
 /**
- * print kaltura version to log by configuration
+ * print kontorol version to log by configuration
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
-function printKalturaPlayerVersionToLog(options: PartialKPOptionsObject | LegacyPartialKPOptionsObject): void {
+function printKontorolPlayerVersionToLog(options: PartialKPOptionsObject | LegacyPartialKPOptionsObject): void {
   const playerVersion = Utils.Object.getPropertyPath(options, 'log.playerVersion');
   if (playerVersion !== false) {
     _setLogLevel(LogLevel.INFO);
@@ -554,7 +554,7 @@ function supportLegacyOptions(options: Object): PartialKPOptionsObject {
  * @returns {void}
  */
 function printSetupMessages(): void {
-  setupMessages.forEach(msgObj => getLogger('KalturaPlayer:Setup')[msgObj.level](msgObj.msg));
+  setupMessages.forEach(msgObj => getLogger('KontorolPlayer:Setup')[msgObj.level](msgObj.msg));
 }
 
 /**
@@ -623,7 +623,7 @@ function hasYoutubeSource(sources: PKSourcesConfigObject): boolean {
 /**
  * Maybe set inBrowserFullscreen config based on the plugins.
  * @private
- * @param {KPOptionsObject} options - kaltura player options
+ * @param {KPOptionsObject} options - kontorol player options
  * @returns {void}
  */
 function maybeSetFullScreenConfig(options: KPOptionsObject): void {
@@ -643,7 +643,7 @@ function maybeSetFullScreenConfig(options: KPOptionsObject): void {
 export {
   printSetupMessages,
   supportLegacyOptions,
-  printKalturaPlayerVersionToLog,
+  printKontorolPlayerVersionToLog,
   setStorageConfig,
   applyStorageSupport,
   applyCastSupport,
@@ -651,7 +651,7 @@ export {
   attachToFirstClick,
   validateConfig,
   setLogOptions,
-  createKalturaPlayerContainer,
+  createKontorolPlayerContainer,
   checkNativeHlsSupport,
   getDefaultOptions,
   isSafari,

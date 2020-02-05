@@ -1,10 +1,10 @@
 // @flow
-import {KalturaPlayer} from '../../kaltura-player';
-import {TextStyle, TrackType, Utils} from '@playkit-js/playkit-js';
+import {KontorolPlayer} from '../../kontorol-player';
+import {TextStyle, TrackType, Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * @class PlayerSnapshot
- * @param {KalturaPlayer} player -  The Kaltura player.
+ * @param {KontorolPlayer} player -  The Kontorol player.
  *
  */
 class PlayerSnapshot {
@@ -29,7 +29,7 @@ class PlayerSnapshot {
    */
   config: Object;
 
-  constructor(player: KalturaPlayer) {
+  constructor(player: KontorolPlayer) {
     this.textStyle = player.textStyle;
     this.mediaInfo = player.getMediaInfo();
     this.mediaConfig = player.getMediaConfig();
@@ -48,10 +48,10 @@ class PlayerSnapshot {
 /**
  * Gets the time to start from with respect to live media.
  * @private
- * @param {KalturaPlayer} player - The player.
+ * @param {KontorolPlayer} player - The player.
  * @returns {number} - The time to start from (0 in live indicates the live edge).
  */
-function getStartTime(player: KalturaPlayer): number {
+function getStartTime(player: KontorolPlayer): number {
   if (player.isLive()) {
     if (player.isDvr()) {
       const isOnLiveEdge = player.duration - player.currentTime < player.config.cast.dvrThreshold;
@@ -74,10 +74,10 @@ function getStartTime(player: KalturaPlayer): number {
  * Otherwise, it will return the configured audio/text.
  * @private
  * @param {string} type - The language type.
- * @param {KalturaPlayer} player - The player.
+ * @param {KontorolPlayer} player - The player.
  * @returns {?string} - The audio language or undefined.
  */
-function getLanguage(type: string, player: KalturaPlayer): ?string {
+function getLanguage(type: string, player: KontorolPlayer): ?string {
   const activeTracks = player.getActiveTracks();
   if (activeTracks[type]) {
     return activeTracks[type].language;

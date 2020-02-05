@@ -3,7 +3,7 @@ import {ValidationErrorType} from '../../../../src/common/utils/validation-error
 import StorageManager from '../../../../src/common/storage/storage-manager';
 import {
   checkNativeHlsSupport,
-  createKalturaPlayerContainer,
+  createKontorolPlayerContainer,
   isIos,
   isSafari,
   setStorageConfig,
@@ -11,7 +11,7 @@ import {
   validateConfig,
   getDefaultOptions
 } from '../../../../src/common/utils/setup-helpers';
-import {Env} from '@playkit-js/playkit-js';
+import {Env} from '@pakhshkit-js/pakhshkit-js';
 
 const targetId = 'player-placeholder_setup-helpers.spec';
 
@@ -54,13 +54,13 @@ describe('error handling', function() {
     navigator.sendBeacon
       .getCall(0)
       .args[0].should.include(
-        'https://analytics.kaltura.com/api_v3/index.php?service=analytics&action=trackEvent&apiVersion=3.3.0&format=1&eventType=1&partnerId=2504201&entryId=1_3bwzbc9o&&eventIndex=1&position=0&referrer'
+        'https://analytics.kontorol.com/api_v3/index.php?service=analytics&action=trackEvent&apiVersion=3.3.0&format=1&eventType=1&partnerId=2504201&entryId=1_3bwzbc9o&&eventIndex=1&position=0&referrer'
       );
     done();
   });
 });
 
-describe('createKalturaPlayerContainer', function() {
+describe('createKontorolPlayerContainer', function() {
   beforeEach(function() {
     TestUtils.createElement('DIV', targetId);
   });
@@ -69,11 +69,11 @@ describe('createKalturaPlayerContainer', function() {
     TestUtils.removeElement(targetId);
   });
 
-  it('should create kaltura player container', function() {
-    let containerId = createKalturaPlayerContainer(targetId);
+  it('should create kontorol player container', function() {
+    let containerId = createKontorolPlayerContainer(targetId);
     let el = document.getElementById(containerId);
     el.should.exist;
-    el.className.should.equal('kaltura-player-container');
+    el.className.should.equal('kontorol-player-container');
   });
 });
 

@@ -34,7 +34,7 @@ describe('UIWrapper', function() {
           id: '0_wifqaipd',
           duration: 741,
           type: 'Vod',
-          poster: 'http://cdntesting.qa.mkaltura.com/p/1091/sp/109100/thumbnail/entry_id/0_wifqaipd/version/100042',
+          poster: 'http://cdntesting.qa.mkontorol.com/p/1091/sp/109100/thumbnail/entry_id/0_wifqaipd/version/100042',
           dvr: false,
           metadata: {
             name: 'MPEG Dash with MultiAudio New Transcoding',

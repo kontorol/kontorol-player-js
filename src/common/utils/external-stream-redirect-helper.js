@@ -1,5 +1,5 @@
 // @flow
-import {Utils} from '@playkit-js/playkit-js';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * JSONP handler function, returns the direct manifest uri.
@@ -40,7 +40,7 @@ function getDirectManifestUri(data: Object, uri: string): string {
 /**
  * Add external stream redirect configuration to the general config.
  * @private
- * @param {KPOptionsObject} options - kaltura player options.
+ * @param {KPOptionsObject} options - kontorol player options.
  * @returns {void}
  */
 function configureExternalStreamRedirect(options: KPOptionsObject): void {

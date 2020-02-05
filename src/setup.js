@@ -1,5 +1,5 @@
 // @flow
-import {KalturaPlayer} from './kaltura-player';
+import {KontorolPlayer} from './kontorol-player';
 import {getPlayerProxy} from './proxy';
 import {evaluatePluginsConfig} from './common/plugins/plugins-config';
 import {
@@ -7,7 +7,7 @@ import {
   applyStorageSupport,
   attachToFirstClick,
   getDefaultOptions,
-  printKalturaPlayerVersionToLog,
+  printKontorolPlayerVersionToLog,
   printSetupMessages,
   setLogOptions,
   setStorageConfig,
@@ -17,13 +17,13 @@ import {
 } from './common/utils/setup-helpers';
 
 /**
- * Setup the Kaltura Player.
- * @param {PartialKPOptionsObject|LegacyPartialKPOptionsObject} options - partial kaltura player options
+ * Setup the Kontorol Player.
+ * @param {PartialKPOptionsObject|LegacyPartialKPOptionsObject} options - partial kontorol player options
  * @private
- * @returns {KalturaPlayer} - The Kaltura Player.
+ * @returns {KontorolPlayer} - The Kontorol Player.
  */
-function setup(options: PartialKPOptionsObject | LegacyPartialKPOptionsObject): KalturaPlayer {
-  printKalturaPlayerVersionToLog(options);
+function setup(options: PartialKPOptionsObject | LegacyPartialKPOptionsObject): KontorolPlayer {
+  printKontorolPlayerVersionToLog(options);
   options = supportLegacyOptions(options);
   validateConfig(options);
   const defaultOptions = getDefaultOptions(options);

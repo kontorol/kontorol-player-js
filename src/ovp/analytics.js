@@ -1,2 +1,2 @@
 // Import analytics plugin
-import '@playkit-js/playkit-js-kava';
+import '@pakhshkit-js/pakhshkit-js-kava';

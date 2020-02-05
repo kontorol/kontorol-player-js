@@ -2,26 +2,26 @@
 # yarn lockfile v1
 
 
-"@playkit-js/playkit-js-dash@^1.15.4":
+"@pakhshkit-js/pakhshkit-js-dash@^1.15.4":
   version "1.15.4"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-dash/-/playkit-js-dash-1.15.4.tgz#ecd6aed932185ad113f5adfbf780f42f67ccb7e3"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-dash/-/pakhshkit-js-dash-1.15.4.tgz#ecd6aed932185ad113f5adfbf780f42f67ccb7e3"
 
-"@playkit-js/playkit-js-hls@^1.17.4":
+"@pakhshkit-js/pakhshkit-js-hls@^1.17.4":
   version "1.17.4"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-hls/-/playkit-js-hls-1.17.4.tgz#d76124f1c35f7e9844ce16e6b7474372591d677f"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-hls/-/pakhshkit-js-hls-1.17.4.tgz#d76124f1c35f7e9844ce16e6b7474372591d677f"
   integrity sha512-EC/0mbA1Zql+VRhWGW6Kp60K+IWE4KHOx2mIeZCr1BWtTyxJaHK9uQ2WwZ5Ez/Hh57ZXc9fdRccMTqU7g7/xNA==
 
-"@playkit-js/playkit-js-kava@^0.14.0":
+"@pakhshkit-js/pakhshkit-js-kava@^0.14.0":
   version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-kava/-/playkit-js-kava-0.14.0.tgz#233942fe77510e4acb8a5cf78cce00543d51f197"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-kava/-/pakhshkit-js-kava-0.14.0.tgz#233942fe77510e4acb8a5cf78cce00543d51f197"
 
-"@playkit-js/playkit-js-ott-analytics@^0.5.2":
+"@pakhshkit-js/pakhshkit-js-ott-analytics@^0.5.2":
   version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-ott-analytics/-/playkit-js-ott-analytics-0.5.2.tgz#a6e14c3d51e8448bf8c93e0ece503c6853741a27"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ott-analytics/-/pakhshkit-js-ott-analytics-0.5.2.tgz#a6e14c3d51e8448bf8c93e0ece503c6853741a27"
 
-"@playkit-js/playkit-js-ui@^0.49.2":
+"@pakhshkit-js/pakhshkit-js-ui@^0.49.2":
   version "0.49.2"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js-ui/-/playkit-js-ui-0.49.2.tgz#fdb69ee2f8197bf2e903980ca306383ed5407ea4"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js-ui/-/pakhshkit-js-ui-0.49.2.tgz#fdb69ee2f8197bf2e903980ca306383ed5407ea4"
   integrity sha512-7l2J9KqB/sOWD5mEWc3GOBoXCGc+qL6YnHoBUTZTiWEUySGQ1T43DkWbuyzH4aXUaRgZCfkw2y6McfgjG6I4Xg==
   dependencies:
     empty "^0.10.1"
@@ -32,9 +32,9 @@
     preact-redux "^2.0.1"
     redux "^3.6.0"
 
-"@playkit-js/playkit-js@^0.58.1":
+"@pakhshkit-js/pakhshkit-js@^0.58.1":
   version "0.58.1"
-  resolved "https://registry.yarnpkg.com/@playkit-js/playkit-js/-/playkit-js-0.58.1.tgz#480ef32c39c005728ce0b1a5fa58478e73ec3c0c"
+  resolved "https://registry.yarnpkg.com/@pakhshkit-js/pakhshkit-js/-/pakhshkit-js-0.58.1.tgz#480ef32c39c005728ce0b1a5fa58478e73ec3c0c"
   dependencies:
     js-logger "^1.3.0"
     ua-parser-js "^0.7.13"
@@ -6324,9 +6324,9 @@ pkginfo@0.x.x:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/pkginfo/-/pkginfo-0.4.1.tgz#b5418ef0439de5425fc4995042dced14fb2a84ff"
 
-"playkit-js-env-manager@https://github.com/kaltura/playkit-js-env-manager.git#v3.3.2":
+"pakhshkit-js-env-manager@https://github.com/kontorol/pakhshkit-js-env-manager.git#v3.3.2":
   version "3.3.2"
-  resolved "https://github.com/kaltura/playkit-js-env-manager.git#0a3821cafd76b941df3ed42f162afba1c03a230d"
+  resolved "https://github.com/kontorol/pakhshkit-js-env-manager.git#0a3821cafd76b941df3ed42f162afba1c03a230d"
   dependencies:
     chalk "^2.1.0"
     fs "0.0.1-security"
@@ -6335,9 +6335,9 @@ pkginfo@0.x.x:
     prompt "^1.0.0"
     shelljs "^0.7.8"
 
-"playkit-js-providers@https://github.com/kaltura/playkit-js-providers.git#v2.20.5":
+"pakhshkit-js-providers@https://github.com/kontorol/pakhshkit-js-providers.git#v2.20.5":
   version "2.20.5"
-  resolved "https://github.com/kaltura/playkit-js-providers.git#1e1eb5f6fceaf5e19fac27fc881231a439b33df8"
+  resolved "https://github.com/kontorol/pakhshkit-js-providers.git#1e1eb5f6fceaf5e19fac27fc881231a439b33df8"
   dependencies:
     js-logger "^1.3.0"
 

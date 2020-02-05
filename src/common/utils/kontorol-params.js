@@ -1,5 +1,5 @@
 //@flow
-import {StreamType, Utils} from '@playkit-js/playkit-js';
+import {StreamType, Utils} from '@pakhshkit-js/pakhshkit-js';
 
 const PLAY_MANIFEST = 'playmanifest/';
 const PLAY_SESSION_ID = 'playSessionId=';
@@ -119,13 +119,13 @@ function addClientTag(source: PKMediaSourceObject): void {
 }
 
 /**
- * Adding Kaltura specific params to player config and player sources.
+ * Adding Kontorol specific params to player config and player sources.
  * @param {Player} player - player
  * @param {PartialKPOptionsObject} playerConfig - player config
  * @return {void}
  * @private
  */
-function addKalturaParams(player: Player, playerConfig: PartialKPOptionsObject): void {
+function addKontorolParams(player: Player, playerConfig: PartialKPOptionsObject): void {
   handleSessionId(player, playerConfig);
   const sources = playerConfig.sources;
   Object.values(StreamType).forEach(key => {
@@ -142,4 +142,4 @@ function addKalturaParams(player: Player, playerConfig: PartialKPOptionsObject):
   });
 }
 
-export {addKalturaParams, handleSessionId, updateSessionIdInUrl, getReferrer, addReferrer, addClientTag};
+export {addKontorolParams, handleSessionId, updateSessionIdInUrl, getReferrer, addReferrer, addClientTag};

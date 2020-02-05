@@ -1,20 +1,20 @@
 // @flow
-import {KalturaPlayer} from '../../kaltura-player';
-import {FakeEvent, Utils, EventManager} from '@playkit-js/playkit-js';
+import {KontorolPlayer} from '../../kontorol-player';
+import {FakeEvent, Utils, EventManager} from '@pakhshkit-js/pakhshkit-js';
 import {PlaylistEventType} from './playlist-event-type';
 import getLogger from '../utils/logger';
 import {Playlist} from './playlist';
 import {PlaylistItem} from './playlist-item';
-import {addKalturaPoster} from 'poster';
+import {addKontorolPoster} from 'poster';
 
 /**
  * @class PlaylistManager
- * @param {KalturaPlayer} player - The player instance
+ * @param {KontorolPlayer} player - The player instance
  * @param {KPOptionsObject} options - The player config object
  */
 class PlaylistManager {
   _logger: any = getLogger('PlaylistManager');
-  _player: KalturaPlayer;
+  _player: KontorolPlayer;
   _eventManager: EventManager;
   _playlist: Playlist;
   _options: KPPlaylistOptions;
@@ -22,7 +22,7 @@ class PlaylistManager {
   _playerOptions: KPOptionsObject;
   _mediaInfoList: Array<ProviderMediaInfoObject>;
 
-  constructor(player: KalturaPlayer, options: KPOptionsObject) {
+  constructor(player: KontorolPlayer, options: KPOptionsObject) {
     this._player = player;
     this._eventManager = new EventManager();
     this._playlist = new Playlist();
@@ -226,7 +226,7 @@ class PlaylistManager {
           playlistConfig && playlistConfig.items && playlistConfig.items[index] && playlistConfig.items[index].sources
         );
         if (Array.isArray(itemData.sources.poster)) {
-          addKalturaPoster(itemData.sources, item.sources, this._player.dimensions);
+          addKontorolPoster(itemData.sources, item.sources, this._player.dimensions);
         }
         return {
           sources: itemData.sources,

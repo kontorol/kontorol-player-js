@@ -1,22 +1,22 @@
 // @flow
-import {KalturaPlayer} from './kaltura-player';
-import {FakeEventTarget} from '@playkit-js/playkit-js';
+import {KontorolPlayer} from './kontorol-player';
+import {FakeEventTarget} from '@pakhshkit-js/pakhshkit-js';
 
-const Players: KalturaPlayers = {};
+const Players: KontorolPlayers = {};
 /**
  * get all instantiated players
- * @returns {KalturaPlayers} - map of player ids and their respective instantiated player
+ * @returns {KontorolPlayers} - map of player ids and their respective instantiated player
  */
-function getPlayers(): KalturaPlayers {
+function getPlayers(): KontorolPlayers {
   return Players;
 }
 
 /**
  * get a player instance by id
  * @param {string} id - the player ID
- * @returns {KalturaPlayer | null} - the player if found by the supplied ID or null if key doesn't exist
+ * @returns {KontorolPlayer | null} - the player if found by the supplied ID or null if key doesn't exist
  */
-function getPlayer(id: string): ?KalturaPlayer {
+function getPlayer(id: string): ?KontorolPlayer {
   if (Players[id]) {
     return Players[id];
   }
@@ -25,7 +25,7 @@ function getPlayer(id: string): ?KalturaPlayer {
 
 const proxyIgnoredProps: Array<string> = ['_remotePlayer', '_listeners', '_uiWrapper'];
 const proxyHandler: Object = {
-  get(kp: KalturaPlayer, prop: string) {
+  get(kp: KontorolPlayer, prop: string) {
     if (prop === 'destroy') {
       const playerId = kp.config.targetId;
       delete Players[playerId];
@@ -41,7 +41,7 @@ const proxyHandler: Object = {
     // $FlowFixMe
     return kp[prop];
   },
-  set(kp: KalturaPlayer, prop: string, value: any) {
+  set(kp: KontorolPlayer, prop: string, value: any) {
     if (kp._remotePlayer && !proxyIgnoredProps.includes(prop)) {
       if (prop in kp._remotePlayer) {
         kp._remotePlayer[prop] = value;
@@ -55,7 +55,7 @@ const proxyHandler: Object = {
 };
 
 const getPlayerProxy = (options: KPOptionsObject) => {
-  const player = new KalturaPlayer(options);
+  const player = new KontorolPlayer(options);
   const proxy = new Proxy(player, proxyHandler);
   Players[options.targetId] = proxy;
   return proxy;

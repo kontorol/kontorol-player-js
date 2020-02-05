@@ -2,7 +2,7 @@
 
 ### Table of Contents
 
-- [KalturaPlayers][1]
+- [KontorolPlayers][1]
 - [KPPlaylistOptions][2]
   - [Properties][3]
 - [KPPlaylistCountdownOptions][4]
@@ -268,11 +268,11 @@
 - [getPlayer][264]
   - [Parameters][265]
 
-## KalturaPlayers
+## KontorolPlayers
 
 a map of player instances by player ids
 
-Type: [Object][266]&lt;[string][267], KalturaPlayer>
+Type: [Object][266]&lt;[string][267], KontorolPlayer>
 
 ## KPPlaylistOptions
 
@@ -328,7 +328,7 @@ Type: [Object][266]
 **Extends FakeEventTarget**
 
 Basic remote player.
-Implements the Kaltura Player playback, ads, tracks,vr and cast APIs.
+Implements the Kontorol Player playback, ads, tracks,vr and cast APIs.
 Remote players should extend this class and implement the needed API.
 
 ### Parameters
@@ -860,7 +860,7 @@ Type: [Object][266]
 
 ```javascript
 // How to use
-player.addEventListener(KalturaPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
+player.addEventListener(KontorolPlayer.cast.CastEventType.CAST_SESSION_STARTED, e => {
   console.log(e.session);
 };
 ```
@@ -869,7 +869,7 @@ player.addEventListener(KalturaPlayer.cast.CastEventType.CAST_SESSION_STARTED, e
 
 ### Parameters
 
-- `player` **KalturaPlayer** The Kaltura player.
+- `player` **KontorolPlayer** The Kontorol player.
 
 ### textStyle
 
@@ -887,7 +887,7 @@ Type: [Object][266]
 
 ### Parameters
 
-- `player` **KalturaPlayer** The Kaltura player.
+- `player` **KontorolPlayer** The Kontorol player.
 
 ### getPlayerSnapshot
 
@@ -1352,7 +1352,7 @@ Type: [Object][266]
 
 ```javascript
 // How to use
-player.addEventListener(KalturaPlayer.playlist.PlaylistEventType.PLAYLIST_LOADED, e => {
+player.addEventListener(KontorolPlayer.playlist.PlaylistEventType.PLAYLIST_LOADED, e => {
   console.log(e.payload.playlist.metadata.name);
 };
 ```
@@ -1398,7 +1398,7 @@ Returns **[boolean][268]** = Whether the playlist item has sources to play
 
 ### Parameters
 
-- `player` **KalturaPlayer** The player instance
+- `player` **KontorolPlayer** The player instance
 - `options` **KPOptionsObject** The player config object
 
 ### configure
@@ -1549,7 +1549,7 @@ Loads a playlist by id.
 ### Examples
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
+kontorolPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
 ```
 
 Returns **[Promise][275]&lt;ProviderPlaylistObject>** The playlist data from the provider.
@@ -1566,7 +1566,7 @@ Loads a playlist by entry list.
 ### Examples
 
 ```javascript
-kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
+kontorolPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
 ```
 
 Returns **[Promise][275]&lt;ProviderPlaylistObject>** The playlist data from the provider.
@@ -1582,7 +1582,7 @@ Config the player.
 ### Examples
 
 ```javascript
-kalturaPlayer.configure({playback: {autoplay: true}});
+kontorolPlayer.configure({playback: {autoplay: true}});
 ```
 
 Returns **void**
@@ -1596,7 +1596,7 @@ Type: [PlaylistManager][287]
 ### Examples
 
 ```javascript
-KalturaPlayer.playlist.playNext();
+KontorolPlayer.playlist.playNext();
 ```
 
 Returns **[PlaylistManager][287]**
@@ -1605,7 +1605,7 @@ Returns **[PlaylistManager][287]**
 
 get all instantiated players
 
-Returns **[KalturaPlayers][288]** map of player ids and their respective instantiated player
+Returns **[KontorolPlayers][288]** map of player ids and their respective instantiated player
 
 ## getPlayer
 
@@ -1615,9 +1615,9 @@ get a player instance by id
 
 - `id` **[string][267]** the player ID
 
-Returns **(KalturaPlayer | null)** the player if found by the supplied ID or null if key doesn't exist
+Returns **(KontorolPlayer | null)** the player if found by the supplied ID or null if key doesn't exist
 
-[1]: #kalturaplayers
+[1]: #kontorolplayers
 [2]: #kpplaylistoptions
 [3]: #properties
 [4]: #kpplaylistcountdownoptions
@@ -1904,4 +1904,4 @@ Returns **(KalturaPlayer | null)** the player if found by the supplied ID or nul
 [285]: #kpplaylistobject
 [286]: #kpplaylistconfigobject
 [287]: #playlistmanager
-[288]: #kalturaplayers
+[288]: #kontorolplayers

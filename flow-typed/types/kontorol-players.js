@@ -1,9 +1,9 @@
-import {KalturaPlayer} from '../../src/kaltura-player';
+import {KontorolPlayer} from '../../src/kontorol-player';
 
 /**
- * @type {Object.<string, KalturaPlayer>}
- * @name KalturaPlayers
+ * @type {Object.<string, KontorolPlayer>}
+ * @name KontorolPlayers
  * @description a map of player instances by player ids
 */
-type _KalturaPlayers = {[id: string]: KalturaPlayer};
-declare type KalturaPlayers = _KalturaPlayers;
+type _KontorolPlayers = {[id: string]: KontorolPlayer};
+declare type KontorolPlayers = _KontorolPlayers;

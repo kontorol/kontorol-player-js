@@ -1,5 +1,5 @@
 //@flow
-import {Utils} from '@playkit-js/playkit-js';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 type dataStoreType = {[pluginName: string]: Object};
 const defaultConfig: dataStoreType = {
