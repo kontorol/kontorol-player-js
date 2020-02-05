@@ -34,7 +34,7 @@ var config = {
 
 The following sections are examples of common (and important) configurations for the player setup.
 
-#### Example: Using a Kaltura Session (KS)
+#### Example: Using a Kontorol Session (KS)
 
 If you need to use a KS for your media requests, configure it inside your provider configuration:
 
@@ -51,7 +51,7 @@ var config = {
 };
 ```
 
-See this [article](https://developer.kaltura.com/api-docs/VPaaS-API-Getting-Started/how-to-create-kaltura-session.html) to learn more about how to create a KS.
+See this [article](https://developer.kontorol.com/api-docs/VPaaS-API-Getting-Started/how-to-create-kontorol-session.html) to learn more about how to create a KS.
 
 #### Example: Using Server Configuration
 
@@ -96,7 +96,7 @@ var config = {
 To get your player instance, use the `setup` factory method and pass it your player configuration:
 
 ```js
-var player = KalturaPlayer.setup(config);
+var player = KontorolPlayer.setup(config);
 ```
 
 ## Next Step

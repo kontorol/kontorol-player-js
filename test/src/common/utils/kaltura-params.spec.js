@@ -1,12 +1,12 @@
 import {
   addClientTag,
-  addKalturaParams,
+  addKontorolParams,
   addReferrer,
   getReferrer,
   addUIConfId,
   handleSessionId,
   updateSessionIdInUrl
-} from '../../../../src/common/utils/kaltura-params';
+} from '../../../../src/common/utils/kontorol-params';
 
 class Player {
   set sessionId(s) {
@@ -16,12 +16,12 @@ class Player {
 
 let player = new Player();
 
-describe('addKalturaParams', function() {
+describe('addKontorolParams', function() {
   it('should add session id, referrer and client tag for playManifest source', function() {
     let source1 = {url: 'a/b/c/playmanifest/source'};
     let source2 = {url: 'd/e/f/playmanifest/source?a'};
     player.config = {session: {}, sources: {progressive: [source1, source2]}};
-    addKalturaParams(player, player.config);
+    addKontorolParams(player, player.config);
     source1.url.should.be.equal(
       'a/b/c/playmanifest/source?playSessionId=' +
         player.config.session.id +
@@ -44,7 +44,7 @@ describe('addKalturaParams', function() {
     let source1 = {url: 'a/b/c/PLAYMANIFEST/source'};
     let source2 = {url: 'd/e/f/PLAYMANIFEST/source?a'};
     player.config = {session: {}, sources: {progressive: [source1, source2]}};
-    addKalturaParams(player, player.config);
+    addKontorolParams(player, player.config);
     source1.url.should.be.equal(
       'a/b/c/PLAYMANIFEST/source?playSessionId=' +
         player.config.session.id +
@@ -65,7 +65,7 @@ describe('addKalturaParams', function() {
 
   it('should add nothing for no playManifest source', function() {
     let source1 = {url: 'a/b/c'};
-    addKalturaParams(player, {sources: {progressive: [source1]}});
+    addKontorolParams(player, {sources: {progressive: [source1]}});
     player.config.session.id.should.be.exist;
     source1.url.should.be.equal('a/b/c');
   });
@@ -73,15 +73,15 @@ describe('addKalturaParams', function() {
   it('should add nothing for no playManifest source', function() {
     let source1 = {url: 'a/b/c/PLAYMANIFEST/source'};
     source1.localSource = true;
-    addKalturaParams(player, {sources: {dash: [source1]}});
+    addKontorolParams(player, {sources: {dash: [source1]}});
     player.config.session.id.should.be.exist;
     source1.url.should.be.equal('a/b/c/PLAYMANIFEST/source');
   });
 
   it('should add session id, referrer and client tag for PLAYMANIFEST source and session id, referrer, client tag and uiconfid to udrm license', function() {
-    let source1 = {url: 'a/b/c/PLAYMANIFEST/source', drmData: [{licenseUrl: 'udrm.kaltura.com?custom_data=someData&signature=Sig'}]};
+    let source1 = {url: 'a/b/c/PLAYMANIFEST/source', drmData: [{licenseUrl: 'udrm.kontorol.com?custom_data=someData&signature=Sig'}]};
     player.config = {provider: {uiConfId: 123}, sources: {progressive: [source1]}};
-    addKalturaParams(player, player.config);
+    addKontorolParams(player, player.config);
     source1.url.should.be.equal(
       'a/b/c/PLAYMANIFEST/source?playSessionId=' +
         player.config.session.id +
@@ -92,7 +92,7 @@ describe('addKalturaParams', function() {
     );
 
     source1.drmData[0].licenseUrl.should.be.equal(
-      'udrm.kaltura.com?custom_data=someData&signature=Sig&sessionId=' +
+      'udrm.kontorol.com?custom_data=someData&signature=Sig&sessionId=' +
         player.config.session.id +
         '&clientTag=html5:v' +
         __VERSION__ +
@@ -105,17 +105,17 @@ describe('addKalturaParams', function() {
   it('should not add session id, referrer, client tag and uiconfid to  other drm system', function() {
     let source1 = {url: 'a/b/c/PLAYMANIFEST/source', drmData: [{licenseUrl: 'udrm.other.com?custom_data=someData&signature=Sig'}]};
     player.config = {provider: {uiConfId: 123}, sources: {progressive: [source1]}};
-    addKalturaParams(player, player.config);
+    addKontorolParams(player, player.config);
 
     source1.drmData[0].licenseUrl.should.be.equal('udrm.other.com?custom_data=someData&signature=Sig');
   });
 
   it('should not add session id, referrer, client tag and uiconfid to  other drm system', function() {
-    let source1 = {url: 'a/b/c/PLAYMANIFEST/source', drmData: [{licenseUrl: 'udrm.kaltura.com?custommm_data=someData&signature=Sig'}]};
+    let source1 = {url: 'a/b/c/PLAYMANIFEST/source', drmData: [{licenseUrl: 'udrm.kontorol.com?custommm_data=someData&signature=Sig'}]};
     player.config = {provider: {uiConfId: 123}, sources: {progressive: [source1]}};
-    addKalturaParams(player, player.config);
+    addKontorolParams(player, player.config);
 
-    source1.drmData[0].licenseUrl.should.be.equal('udrm.kaltura.com?custommm_data=someData&signature=Sig');
+    source1.drmData[0].licenseUrl.should.be.equal('udrm.kontorol.com?custommm_data=someData&signature=Sig');
   });
 });
 

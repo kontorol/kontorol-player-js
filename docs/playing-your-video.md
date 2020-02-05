@@ -33,7 +33,7 @@ To learn how to fill your media info object correctly, click the relevant media 
 | Name      | Type     | Required | Description                     | Possible Values | Default Value |
 | --------- | -------- | -------- | ------------------------------- | --------------- | ------------- |
 | `entryId` | `string` | V        | The entry ID of the media       |
-| `ks`      | `string` |          | The KS (Kaltura Session) secret |
+| `ks`      | `string` |          | The KS (Kontorol Session) secret |
 
 ### Examples
 
@@ -83,7 +83,7 @@ var mediaInfo = {
 | `mediaType`          | `string`        |          | The type of the specific media         | `"media"`, `"epg"`, `"recording"`                      | `"media"`     |
 | `assetReferenceType` | `string`        |          | The asset type of the specific media   | `"media"`, `"epg_internal"`, `"epg_external"`          | `"media"`     |
 | `contextType`        | `string`        |          | The playback context type              | `"PLAYBACK"`, `"CATCHUP"`, `"START_OVER"`, `"TRAILER"` | `"PLAYBACK"`  |
-| `ks`                 | `string`        |          | The KS (Kaltura Session) secret        |
+| `ks`                 | `string`        |          | The KS (Kontorol Session) secret        |
 | `protocol`           | `string`        |          | The protocol of the specific media     | `"https"`, `"http"`                                    |
 | `fileIds`            | `string`        |          | List of comma-separated media file IDs |
 | `formats`            | `Array<string>` |          | Device types as defined in the system. |

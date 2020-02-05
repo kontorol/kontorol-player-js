@@ -1,8 +1,8 @@
 //@flow
 import {pluginConfig, templateRegex} from './plugins-config-store.js';
 import evaluate from '../utils/evaluate';
-import {getReferrer} from '../utils/kaltura-params';
-import {Utils} from '@playkit-js/playkit-js';
+import {getReferrer} from '../utils/kontorol-params';
+import {Utils} from '@pakhshkit-js/pakhshkit-js';
 
 /**
  * returns whether value is evaluated
@@ -35,7 +35,7 @@ const removeUnevaluatedExpression = (obj = {}): Object =>
 /**
  * returns the data model for evaluating evaluation tokens
  * @private
- * @param {KPOptionsObject} options - the kaltura player options object
+ * @param {KPOptionsObject} options - the kontorol player options object
  * @returns {Object} - data model
  */
 const getModel = (options: KPOptionsObject): Object => {
@@ -131,7 +131,7 @@ function evaluateUIConfig(options: UIOptionsObject, config: KPOptionsObject): vo
       components: {
         share: {
           shareUrl: `{{embedBaseUrl}}/index.php/extwidget/preview/partner_id/{{partnerId}}/uiconf_id/{{uiConfId}}/entry_id/{{entryId}}/embed/dynamic`,
-          embedUrl: `{{embedBaseUrl}}/p/{{partnerId}}/embedPlaykitJs/uiconf_id/{{uiConfId}}?iframeembed=true&entry_id={{entryId}}`
+          embedUrl: `{{embedBaseUrl}}/p/{{partnerId}}/embedPakhshkitJs/uiconf_id/{{uiConfId}}?iframeembed=true&entry_id={{entryId}}`
         }
       }
     };

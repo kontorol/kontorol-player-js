@@ -42,8 +42,8 @@ describe('evaluatePluginsConfig', function() {
 describe('getEncodedReferrer', function() {
   it('should encode the referrer', function() {
     sandbox.stub(window.parent.document, 'URL').get(() => {
-      return 'http://localhost:3000/?debugKalturaPlayer';
+      return 'http://localhost:3000/?debugKontorolPlayer';
     });
-    getEncodedReferrer().should.be.equal('http%3A%2F%2Flocalhost%3A3000%2F%3FdebugKalturaPlayer');
+    getEncodedReferrer().should.be.equal('http%3A%2F%2Flocalhost%3A3000%2F%3FdebugKontorolPlayer');
   });
 });

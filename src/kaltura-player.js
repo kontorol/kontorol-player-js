@@ -1,11 +1,11 @@
 // @flow
-import {EventType as UIEventType} from '@playkit-js/playkit-js-ui';
-import {Provider} from 'playkit-js-providers';
+import {EventType as UIEventType} from '@pakhshkit-js/pakhshkit-js-ui';
+import {Provider} from 'pakhshkit-js-providers';
 import {supportLegacyOptions, maybeSetStreamPriority, hasYoutubeSource} from './common/utils/setup-helpers';
 import getLogger from './common/utils/logger';
-import {addKalturaParams} from './common/utils/kaltura-params';
+import {addKontorolParams} from './common/utils/kontorol-params';
 import {evaluatePluginsConfig, evaluateUIConfig} from './common/plugins/plugins-config';
-import {addKalturaPoster} from 'poster';
+import {addKontorolPoster} from 'poster';
 import './assets/style.css';
 import {UIWrapper} from './common/ui-wrapper';
 import {PlaylistManager} from './common/playlist/playlist-manager';
@@ -26,9 +26,9 @@ import {
   TextStyle,
   Track,
   Utils
-} from '@playkit-js/playkit-js';
+} from '@pakhshkit-js/pakhshkit-js';
 
-class KalturaPlayer extends FakeEventTarget {
+class KontorolPlayer extends FakeEventTarget {
   _eventManager: EventManager;
   _mediaInfo: ?ProviderMediaInfoObject = null;
   _remotePlayer: ?BaseRemotePlayer = null;
@@ -43,7 +43,7 @@ class KalturaPlayer extends FakeEventTarget {
     const {sources} = options;
     const noSourcesOptions = Utils.Object.mergeDeep({}, options, {sources: null});
     this._localPlayer = loadPlayer(noSourcesOptions);
-    this._logger = getLogger('KalturaPlayer' + Utils.Generator.uniqueId(5));
+    this._logger = getLogger('KontorolPlayer' + Utils.Generator.uniqueId(5));
     this._uiWrapper = new UIWrapper(this, options);
     this._provider = new Provider(options.provider, __VERSION__);
     this._playlistManager = new PlaylistManager(this, options);
@@ -81,8 +81,8 @@ class KalturaPlayer extends FakeEventTarget {
     Object.keys(this._localPlayer.config.plugins).forEach(name => {
       playerConfig.plugins[name] = playerConfig.plugins[name] || {};
     });
-    addKalturaPoster(playerConfig.sources, mediaConfig.sources, this._localPlayer.dimensions);
-    addKalturaParams(this, playerConfig);
+    addKontorolPoster(playerConfig.sources, mediaConfig.sources, this._localPlayer.dimensions);
+    addKontorolParams(this, playerConfig);
     maybeSetStreamPriority(this, playerConfig);
     if (!hasYoutubeSource(playerConfig.sources)) {
       this._uiWrapper.setSeekbarConfig(mediaConfig, this._localPlayer.config.ui);
@@ -96,9 +96,9 @@ class KalturaPlayer extends FakeEventTarget {
    * @param {KPPlaylistConfigObject} [playlistConfig] - The playlist config.
    * @returns {Promise<ProviderPlaylistObject>} - The playlist data from the provider.
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof KontorolPlayer
    * @example
-   * kalturaPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
+   * kontorolPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
    */
   loadPlaylist(playlistInfo: ProviderPlaylistInfoObject, playlistConfig: ?KPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
     this._logger.debug('loadPlaylist', playlistInfo);
@@ -120,9 +120,9 @@ class KalturaPlayer extends FakeEventTarget {
    * @param {KPPlaylistConfigObject} [playlistConfig] - The playlist config.
    * @returns {Promise<ProviderPlaylistObject>} - The playlist data from the provider.
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof KontorolPlayer
    * @example
-   * kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
+   * kontorolPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
    */
   loadPlaylistByEntryList(entryList: ProviderEntryListObject, playlistConfig: ?KPPlaylistConfigObject): Promise<ProviderPlaylistObject> {
     this._logger.debug('loadPlaylistByEntryList', entryList);
@@ -167,9 +167,9 @@ class KalturaPlayer extends FakeEventTarget {
    * @param {Object} [config={}] - The player config.
    * @returns {void}
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof KontorolPlayer
    * @example
-   * kalturaPlayer.configure({playback: {autoplay: true}});
+   * kontorolPlayer.configure({playback: {autoplay: true}});
    */
   configure(config: Object = {}): void {
     config = supportLegacyOptions(config);
@@ -475,9 +475,9 @@ class KalturaPlayer extends FakeEventTarget {
    * The playlist controller.
    * @type {PlaylistManager}
    * @instance
-   * @memberof KalturaPlayer
+   * @memberof KontorolPlayer
    * @example
-   * KalturaPlayer.playlist.playNext();
+   * KontorolPlayer.playlist.playNext();
    */
   get playlist(): PlaylistManager {
     return this._playlistManager;
@@ -548,4 +548,4 @@ class KalturaPlayer extends FakeEventTarget {
   }
 }
 
-export {KalturaPlayer};
+export {KontorolPlayer};

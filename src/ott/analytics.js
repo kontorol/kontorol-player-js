@@ -1,3 +1,3 @@
 // Import analytics plugin
-import '@playkit-js/playkit-js-ott-analytics';
-import '@playkit-js/playkit-js-kava';
+import '@pakhshkit-js/pakhshkit-js-ott-analytics';
+import '@pakhshkit-js/pakhshkit-js-kava';

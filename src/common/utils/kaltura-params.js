@@ -1,5 +1,5 @@
 //@flow
-import {StreamType, Utils} from '@playkit-js/playkit-js';
+import {StreamType, Utils} from '@pakhshkit-js/pakhshkit-js';
 
 const PLAY_MANIFEST = 'playmanifest/';
 const PLAY_SESSION_ID = 'playSessionId=';
@@ -7,7 +7,7 @@ const DRM_SESSION_ID = 'sessionId=';
 const REFERRER = 'referrer=';
 const UICONF_ID = 'uiConfId=';
 const CLIENT_TAG = 'clientTag=html5:v';
-const UDRM_DOMAIN = 'kaltura.com';
+const UDRM_DOMAIN = 'kontorol.com';
 const CUSTOM_DATA = 'custom_data=';
 const SIGNATURE = 'signature=';
 
@@ -148,13 +148,13 @@ function addClientTag(url: string): string {
 }
 
 /**
- * Adding Kaltura specific params to player config and player sources.
+ * Adding Kontorol specific params to player config and player sources.
  * @param {Player} player - player
  * @param {PartialKPOptionsObject} playerConfig - player config
  * @return {void}
  * @private
  */
-function addKalturaParams(player: Player, playerConfig: PartialKPOptionsObject): void {
+function addKontorolParams(player: Player, playerConfig: PartialKPOptionsObject): void {
   handleSessionId(player, playerConfig);
   const sources = playerConfig.sources;
   const sessionId = playerConfig.session && playerConfig.session.id;
@@ -182,4 +182,4 @@ function addKalturaParams(player: Player, playerConfig: PartialKPOptionsObject):
   });
 }
 
-export {addKalturaParams, handleSessionId, updateSessionIdInUrl, getReferrer, addReferrer, addClientTag, addUIConfId};
+export {addKontorolParams, handleSessionId, updateSessionIdInUrl, getReferrer, addReferrer, addClientTag, addUIConfId};

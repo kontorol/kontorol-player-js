@@ -2,16 +2,16 @@
 import PolyfillManager from './common/polyfills/polyfill-manager';
 import './common/polyfills/all';
 // Import core
-import * as core from '@playkit-js/playkit-js';
+import * as core from '@pakhshkit-js/pakhshkit-js';
 // Import ui
-import * as ui from '@playkit-js/playkit-js-ui';
+import * as ui from '@pakhshkit-js/pakhshkit-js-ui';
 // Import provider
-import * as providers from 'playkit-js-providers';
+import * as providers from 'pakhshkit-js-providers';
 // Import media source adapters
-import '@playkit-js/playkit-js-hls';
-import '@playkit-js/playkit-js-dash';
+import '@pakhshkit-js/pakhshkit-js-hls';
+import '@pakhshkit-js/pakhshkit-js-dash';
 // Import analytics plugin
-import 'playkit-js-analytics';
+import 'pakhshkit-js-analytics';
 // Import shaka-player
 import * as shaka from 'shaka-player';
 // Import setup method

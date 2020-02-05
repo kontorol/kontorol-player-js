@@ -1,6 +1,6 @@
 # Playlist
 
-The Kaltura Player exposes several APIs that are used for loading, configuring, and manipulating playlists.
+The Kontorol Player exposes several APIs that are used for loading, configuring, and manipulating playlists.
 
 ## Table of Contents
 
@@ -14,22 +14,22 @@ The Kaltura Player exposes several APIs that are used for loading, configuring, 
 
 ### Load A Playlist
 
-Before loading a playlist, you'll need to set up a Kaltura Player instance as follows.
+Before loading a playlist, you'll need to set up a Kontorol Player instance as follows.
 
 ```javascript
 const config = PLAYER_CONFIG;
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
-To learn how to set up a Kaltura Player, see [Player Setup](./player-setup.md).
-<br>Once you have a Kaltura Player instance, you can load a playlist using one of the following methods:
+To learn how to set up a Kontorol Player, see [Player Setup](./player-setup.md).
+<br>Once you have a Kontorol Player instance, you can load a playlist using one of the following methods:
 
 #### By Playlist ID (OVP Only)
 
 To load a playlist by ID, use [`loadPlaylist`](./api.md#loadplaylist) method.
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'});
+kontorolPlayer.loadPlaylist({playlistId: '123456'});
 ```
 
 #### By Entry List
@@ -38,7 +38,7 @@ To load a playlist by entry list, use the [`loadPlaylistByEntryList`](./api.md#l
 <br>This method creates a playlist according to the given entries.
 
 ```javascript
-kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]});
+kontorolPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]});
 ```
 
 #### By Configuration
@@ -46,7 +46,7 @@ kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '
 You can load a playlist by configuring the playlist data and items explicitly using the [`configure`](./api.md#configure-3) method.
 
 ```javascript
-kalturaPlayer.configure({
+kontorolPlayer.configure({
   playlist: {
     metadata: {
       name: 'my playlist name',
@@ -93,17 +93,17 @@ By default, once the current item is ended, the playlist continues to the next i
 <br>Via the API:
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
+kontorolPlayer.loadPlaylist({playlistId: '123456'}, {options: {autoContinue: false}});
 ```
 
 ```javascript
-kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
+kontorolPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {options: {autoContinue: false}});
 ```
 
 By configuration:
 
 ```javascript
-kalturaPlayer.configure({
+kontorolPlayer.configure({
   playlist: {
     options: {autoContinue: false}
   }
@@ -111,7 +111,7 @@ kalturaPlayer.configure({
 ```
 
 > Note: The `autoContinue` property is relevant only for the second item onwards.
-> <br>To play the first entry automatically, use the [`autoplay`](https://github.com/kaltura/playkit-js/blob/master/docs/autoplay.md) configuration.
+> <br>To play the first entry automatically, use the [`autoplay`](https://github.com/kontorol/pakhshkit-js/blob/master/docs/autoplay.md) configuration.
 
 For full playlist options see [`KPPlaylistOptions`](./api.md#kpplaylistoptions).
 
@@ -126,17 +126,17 @@ By default, the countdown is displayed for 10 seconds until the end.
 <br>Via the API:
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'}, {countdown: {duration: 20}});
+kontorolPlayer.loadPlaylist({playlistId: '123456'}, {countdown: {duration: 20}});
 ```
 
 ```javascript
-kalturaPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {countdown: {duration: 20}});
+kontorolPlayer.loadPlaylistByEntryList({entries: [{entryId: '01234'}, {entryId: '56789'}]}, {countdown: {duration: 20}});
 ```
 
 By configuration:
 
 ```javascript
-kalturaPlayer.configure({
+kontorolPlayer.configure({
   playlist: {
     countdown: {
       duration: 20
@@ -148,7 +148,7 @@ kalturaPlayer.configure({
 To show the countdown in a specific moment (usually to enable the user to skip the end subtitles) configure:
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '123456'}, {countdown: {timeToShow: 600}});
+kontorolPlayer.loadPlaylist({playlistId: '123456'}, {countdown: {timeToShow: 600}});
 ```
 
 In this case the countdown will display at the 600th second for 10 seconds, and then will skip to the next item.
@@ -161,14 +161,14 @@ Using the [`playlist`](./api.md#playlist) API, you can get the playlist data and
 
 ```javascript
 // switch to the next item
-kalturaPlayer.playlist.playNext();
+kontorolPlayer.playlist.playNext();
 
 // switch to the previous item
-kalturaPlayer.playlist.playPrev();
+kontorolPlayer.playlist.playPrev();
 
 // switch to a specific item by index
-const lastItemIndex = kalturaPlayer.playlist.items.length - 1;
-kalturaPlayer.playlist.playItem(lastItemIndex);
+const lastItemIndex = kontorolPlayer.playlist.items.length - 1;
+kontorolPlayer.playlist.playItem(lastItemIndex);
 ```
 
 For the complete `playlist` API, see [PlaylistManager](./api.md#playlistmanager).
@@ -179,29 +179,29 @@ To clean the playlist data, you'll need to call the [`playlist.reset`](./api.md#
 <br>Here is an example how to change the playlist using the [`playlist events`](./api.md#playlisteventtype) and [`playlist.reset`](./api.md#reset-2) method.
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '01234'});
-kalturaPlayer.addEventListener(KalturaPlayer.playlist.PlaylistEventType.PLAYLIST_ENDED, () => {
-  kalturaPlayer.playlist.reset();
-  kalturaPlayer.loadPlaylist({playlistId: '56789'});
+kontorolPlayer.loadPlaylist({playlistId: '01234'});
+kontorolPlayer.addEventListener(KontorolPlayer.playlist.PlaylistEventType.PLAYLIST_ENDED, () => {
+  kontorolPlayer.playlist.reset();
+  kontorolPlayer.loadPlaylist({playlistId: '56789'});
 });
 ```
 
 > Note: The playlist [config](./api.md#KPPlaylistConfigObject) is not removed on reset.
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '01234'}, {options: {autoContinue: false}});
-kalturaPlayer.playlist.reset();
-kalturaPlayer.loadPlaylist({playlistId: '56789'}).then(() => {
-  console.log(kalturaPlayer.playlist.options.autoContinue); // false
+kontorolPlayer.loadPlaylist({playlistId: '01234'}, {options: {autoContinue: false}});
+kontorolPlayer.playlist.reset();
+kontorolPlayer.loadPlaylist({playlistId: '56789'}).then(() => {
+  console.log(kontorolPlayer.playlist.options.autoContinue); // false
 });
 ```
 
 > To change this behavior, you'll need to override the configuration as follows:
 
 ```javascript
-kalturaPlayer.loadPlaylist({playlistId: '01234'}, {options: {autoContinue: false}});
-kalturaPlayer.playlist.reset();
-kalturaPlayer.loadPlaylist({playlistId: '56789'}, {options: {autoContinue: true}}).then(() => {
-  console.log(kalturaPlayer.playlist.options.autoContinue); // true
+kontorolPlayer.loadPlaylist({playlistId: '01234'}, {options: {autoContinue: false}});
+kontorolPlayer.playlist.reset();
+kontorolPlayer.loadPlaylist({playlistId: '56789'}, {options: {autoContinue: true}}).then(() => {
+  console.log(kontorolPlayer.playlist.options.autoContinue); // true
 });
 ```

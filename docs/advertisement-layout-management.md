@@ -47,7 +47,7 @@ const config = {
   }
   ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 > In this sample, the player will try to request and play 4 ads.  
@@ -84,7 +84,7 @@ const config = {
   }
   ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 > In this sample, the player will try to request and play 4 ads in 2 ad breaks, each one contains 2 ads consecutively.
@@ -115,7 +115,7 @@ const config = {
   }
   ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 > Important: A fallback url (e.g. MID_ROLL_VAST_URL_2) will be only used if the previous request (MID_ROLL_VAST_URL_1) is failed.
@@ -187,7 +187,7 @@ const config = {
  }
  ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 ### Play Ads After Time
@@ -215,7 +215,7 @@ const config = {
   }
   ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 In this sample, the player will skip the pre-roll, and will play the mid-roll only.
@@ -243,7 +243,7 @@ const config = {
   }
   ...
 }
-const kalturaPlayer = KalturaPlayer.setup(config);
+const kontorolPlayer = KontorolPlayer.setup(config);
 ```
 
 In this sample, the player will play the pre-roll, and only after that will start the playback from the 60's second.
@@ -263,10 +263,10 @@ All the above features are supported not only by `advertising` config, but also 
 The app may call it whenever it wants to play an ad pod.
 
 ```ecmascript 6
-const kalturaPlayer = KalturaPlayer.setup(config);
-kalturaPlayer.play();
+const kontorolPlayer = KontorolPlayer.setup(config);
+kontorolPlayer.play();
 ... // playback
-kalturaPlayer.ads.playAdNow(
+kontorolPlayer.ads.playAdNow(
   [
     {
       url: [MID_ROLL_1_VAST_URL_1, MID_ROLL_1_VAST_URL_2, ...]

@@ -9,7 +9,7 @@ import {THUMBNAIL_REGEX} from '../common/utils/thumbs';
  * @private
  * @returns {void}
  */
-function addKalturaPoster(playerSources: PKSourcesConfigObject, mediaSources: ProviderMediaConfigSourcesObject, dimensions: Object): void {
+function addKontorolPoster(playerSources: PKSourcesConfigObject, mediaSources: ProviderMediaConfigSourcesObject, dimensions: Object): void {
   const playerPoster = playerSources.poster;
   const mediaConfigPoster = mediaSources.poster;
   const playerWidth = dimensions.width;
@@ -19,4 +19,4 @@ function addKalturaPoster(playerSources: PKSourcesConfigObject, mediaSources: Pr
   }
 }
 
-export {addKalturaPoster};
+export {addKontorolPoster};
